@@ -155,4 +155,98 @@ func ucret (adet : Int, boyut : Boyut){
 
 ucret(adet: 200, boyut: .orta)
 
-//Kalitim - Inheritance - Miras
+//Kalitim - Inheritance - Miras  15.09.2024
+
+class ev {
+    
+    var penceresayisi:Int?
+    
+    init(penceresayisi: Int? = nil) {
+        self.penceresayisi = penceresayisi
+    }
+    
+}
+class saray : ev {
+    
+    var kulesayisi:Int?
+    
+    init(kulesayisi: Int?, penceresayisi: Int) {
+        self.kulesayisi = kulesayisi
+        super.init(penceresayisi:penceresayisi)
+    }
+    
+}
+class villa : ev {
+    
+    var garajVarmi:Bool?
+    
+    init(garajVarmi: Bool?, penceresayisi: Int) {
+        self.garajVarmi = garajVarmi
+        super.init(penceresayisi: penceresayisi)
+    }
+    
+}
+
+//Override : Kalıtım var
+
+class Hayvan {
+    func sesCikar() {
+        print("Sesim Yok")
+    }
+}
+class Memeli : Hayvan {
+    
+    
+}
+class Kedi : Memeli{
+    override func sesCikar() {
+        print("Miyav Miyav")
+    }
+    
+}
+class Kopek : Memeli{
+    override func sesCikar() {
+        print("Hav Hav")
+    }
+    
+}
+
+let hayvan = Hayvan()
+let memeli = Memeli()
+let kedi = Kedi()
+let kopek = Kopek()
+
+hayvan.sesCikar()//Kalitim yok, kendi methoduna erişiyor
+memeli.sesCikar()//Kalitim var üst sınıfın methoduna erişiyor
+kedi.sesCikar()//kalitim var kendi methoduna erişiyor
+kopek.sesCikar()//kallitim var kendi methoduna erişiyor.
+
+
+
+// Protocol
+protocol myProtocol {
+    var degisken : Int{get set}
+    
+    func metod1()
+    func metod2() -> String
+    
+}
+
+class myClass : myProtocol {
+    var degisken: Int = 10
+    func metod1() {
+        print("Metod 1 çalıştı")
+    }
+    func metod2() -> String {
+        return "Metod 2 çalıştı"
+    }
+}
+
+//Closure
+
+let ifade = {
+    print("Merhaba")
+}
+
+ifade()
+
